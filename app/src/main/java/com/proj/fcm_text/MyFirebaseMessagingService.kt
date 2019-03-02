@@ -64,10 +64,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         //}
 
         // Check if message contains a notification payload.
-        //remoteMessage?.notification?.let {
-        //    Log.d(TAG, "Message Notification Body: ${it.body}")
-        //    sendNotification(remoteMessage.notification!!.body!!)
-        //}
+        remoteMessage?.notification?.let {
+            Log.d(TAG, "Message Notification Body: ${it.body}")
+            sendNotification(remoteMessage.notification!!.body!!)
+        }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -132,8 +132,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             PendingIntent.FLAG_ONE_SHOT)
 
         val channelId = getString(R.string.default_notification_channel_id)
-        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setPriority(2)
             .setSmallIcon(R.drawable.ic_stat_ic_notification)
             .setContentTitle(getString(R.string.fcm_message))
             .setContentText(messageBody)
