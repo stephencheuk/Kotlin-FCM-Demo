@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="@string/subscribe_to_weather" />
+            android:text="@string/subscribe" />
 
     <Button
             android:id="@+id/logTokenButton"
